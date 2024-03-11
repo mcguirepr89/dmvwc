@@ -7,7 +7,7 @@ This uses TailwindCSS for styling -- find the standalone binary for
 your architecture <a href="https://github.com/tailwindlabs/tailwindcss/releases/tag/v3.0.23">HERE</a>
 
 Clone the repo:
-# `git clone https://github.com/mcguirepr89/dmvwc.git`
+1. `git clone https://github.com/mcguirepr89/dmvwc.git`
 
 This step:
 ## this
