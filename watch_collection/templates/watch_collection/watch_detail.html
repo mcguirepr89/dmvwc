@@ -1,0 +1,46 @@
+<!-- watch_collection/templates/watch_collection/watch_detail.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- <div class="container mx-auto text-center"> -->
+      <div class="min-h-screen flex items-center justify-center">
+    <div class="text-center">
+    <h1 class="font-bold pb-4">{{ watch.brand }} -- {{ watch.model }}</h1>
+    
+    {% if watch.example_photo %}
+        <a href="{{ watch.example_photo.url }}" target="">
+            <img src="{{ watch.example_photo.url }}" alt="{{ watch.brand }} - {{ watch.movement }} Photo" class="mx-auto max-h-96">
+        </a>
+    {% endif %}
+
+    <br>
+    <div class="text-left">
+{% if can_view %}
+    {% if can_edit %}
+        <form method="post" action="{% url 'watch-detail' pk=watch.pk username=watch.user.username %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <div class="text-center">
+            <button class="border rounded-lg border-2 border-white p-2 bg-green-300 hover:italic font-bold" type="submit">Save Changes</button>
+            </div>
+        </form>
+    {% else %}
+        <ul>
+            <li>{{ watch.brand }}</li>
+            <li>{{ watch.model }}</li>
+            <li>{{ watch.movement }}</li>
+        </ul>
+        <br>
+        <p>This watch is viewable, but you don't have permission to edit it.</p>
+    {% endif %}
+{% else %}
+    <p>This watch is not viewable to you.</p>
+{% endif %}
+
+</div>
+</div>
+</div>
+{% endblock %}
+

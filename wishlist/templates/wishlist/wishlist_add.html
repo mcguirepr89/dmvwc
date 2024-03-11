@@ -1,0 +1,19 @@
+<!-- wishlist/templates/wishlist/wishlist_add.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="min-h-screen flex items-center justify-center">
+    <div class="justify-left">
+      <h2 class="text-center p-2">Add Watch to Wishlist</h2>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <br>
+        <div class="text-center">
+            <button class="border rounded-lg border-2 border-white p-2 bg-green-300 hover:italic font-bold" type="submit">Add to Wishlist</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

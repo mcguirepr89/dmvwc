@@ -1,0 +1,33 @@
+<!-- templates/base.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+    <!-- Other head content... -->
+</head>
+
+<body class="bg-slate-100">
+
+    {% include 'navbar.html' %}
+
+    <!-- Common content goes here -->
+
+    <div class="container mx-auto p-0 sm:p-4">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        <!-- Footer content... -->
+        {% block footer %}{% endblock %}
+    </footer>
+
+    <!-- Other script includes... -->
+</body>
+
+</html>
+

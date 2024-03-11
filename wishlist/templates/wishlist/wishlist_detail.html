@@ -1,0 +1,49 @@
+<!-- wishlist/templates/wishlist/wishlist_detail.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center">
+    <div class="text-center">
+        <h1 class="font-bold pb-4">{{ wishlist_item.item_name }}</h1>
+
+        <!-- Display other wishlist_item details as needed -->
+
+        {% if wishlist_item.example_photo %}
+            <a href="{{ wishlist_item.example_photo.url }}" target="">
+                <img src="{{ wishlist_item.example_photo.url }}" alt="{{ wishlist_item.item_name }} Photo" class="mx-auto max-h-96">
+            </a>
+        {% endif %}
+
+        <br>
+
+        <div class="text-left">
+            {% if can_view %}
+                {% if can_edit %}
+                    <form method="post" action="{% url 'wishlist-detail' pk=wishlist_item.pk username=wishlist_item.user.username %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <br>
+                        <div class="text-center">
+                            <button class="border rounded-lg border-2 border-white p-2 bg-green-300 hover:italic font-bold" type="submit">Save Changes</button>
+                        </div>
+                    </form>
+                {% else %}
+                    <ul>
+                        <li>{{ wishlist_item.brand }}</li>
+                        <li>{{ wishlist_item.model }}</li>
+                        <li>{{ wishlist_item.movement }}</li>
+                        <li>Price: {{ wishlist_item.price }}</li>
+                        <!-- Add other fields as needed -->
+                    </ul>
+                    <br>
+                    <p>This wishlist item is viewable, but you don't have permission to edit it.</p>
+                {% endif %}
+            {% else %}
+                <p>This wishlist item is not viewable to you.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,20 @@
+<!-- watch_collection/templates/watch_collection/watch_delete_multiple.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mx-auto p-8">
+    <h1 class="text-3xl font-bold text-center mb-6">Delete Watches</h1>
+
+    {% if form.is_valid %}
+      <p class="text-green-500">Watches successfully deleted.</p>
+    {% endif %}
+
+    <form method="post" action="{% url 'watch-delete-multiple' username=request.user.username %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="bg-red-500 text-white px-4 py-2 mt-4">Delete Selected</button>
+    </form>
+
+    <a href="{% url 'watch-collection' username=request.user.username %}" class="block mt-4 text-blue-500">Back to Collection</a>
+  </div>
+{% endblock %}

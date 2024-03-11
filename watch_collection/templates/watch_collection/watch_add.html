@@ -1,0 +1,18 @@
+<!-- watch_add.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="min-h-screen flex items-center justify-center">
+    <div class="justify-left">
+      <h2 class="text-center p-2">Add a New Watch</h2>
+      <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_ul }}
+          <br>
+          <div class="text-center">
+          <button class="border rounded-lg border-2 border-white p-2 bg-green-300 text-center" type="submit">Add Watch</button>
+          </div>
+      </form>
+  </div>
+{% endblock %}
