@@ -29,7 +29,7 @@ cat > ~/WatchCollectionProject/dmvwc/static/css/input.css <<EOF
 EOF
 
 
-tailwindcss -i ~/WatchCollectionProject/dmvwc/static/css/input.css -o ~/WatchCollectionProject/dmvwc/static/css/output.css --watch
+tailwindcss -i ~/WatchCollectionProject/dmvwc/static/css/input.css -o ~/WatchCollectionProject/dmvwc/static/css/output.css
 
 python manage.py migrate --fake-initial
 python manage.py migrate
