@@ -1,4 +1,4 @@
-set -e
+set -ex
 mkdir ~/WatchCollectionProject && git clone https://github.com/mcguirepr89/dmvwc.git ~/WatchCollectionProject/dmvwc
 
 cd ~/WatchCollectionProject && python3 -m venv venv
