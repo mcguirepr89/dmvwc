@@ -59,7 +59,7 @@ your architecture <a href="https://github.com/tailwindlabs/tailwindcss/releases/
    EOF
    ```
 
-1. Make your `./static` and `./media` directories:
+1. Make your `./static/css` and `./media` directories:
 
    ```
    mkdir -p ~/WatchCollectionProject/dmvwc/{static/css,media}
