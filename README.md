@@ -79,7 +79,11 @@ your architecture <a href="https://github.com/tailwindlabs/tailwindcss/releases/
    ```
    tailwindcss -i ~/WatchCollectionProject/dmvwc/static/css/input.css -o ~/WatchCollectionProject/dmvwc/static/css/output.css --watch
    ```
+1. Migrate database tables:
 
+   ```
+   python manage.py migrate
+   ```
 1. Run the development server:
 
    ```
