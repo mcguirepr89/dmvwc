@@ -50,11 +50,13 @@ your architecture <a href="https://github.com/tailwindlabs/tailwindcss/releases/
 1. Make your `.env` file
 
    ```
+   cat > ~/WatchCollectionProject/dmvwc/.env <<EOF
    # .env
    SECRET_KEY=django-insecure-mySuperLongSecretKeyThatNeedsToBeChangedForProduction
    DEBUG=True
    ALLOWED_HOSTS=*
    CSRF_TRUSTED_ORIGINS=http://127.0.0.1
+   EOF
    ```
 
 1. Make your `./static` and `./media` directories:
@@ -65,7 +67,6 @@ your architecture <a href="https://github.com/tailwindlabs/tailwindcss/releases/
 1. Make your `./static/css/input.css` file:
 
    ```
-   touch ~/WatchCollectionProject/dmvwc/static/css/input.css && \
    cat > ~/WatchCollectionProject/dmvwc/static/css/input.css <<EOF
    @tailwind base;
    @tailwind components;
