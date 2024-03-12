@@ -57,12 +57,20 @@ your architecture <a href="https://github.com/tailwindlabs/tailwindcss/releases/
    CSRF_TRUSTED_ORIGINS=http://127.0.0.1
    ```
 
+1. Make your `./static` and `./media` directories:
+
+   ```
+   mkdir -p ~/WatchCollectionProject/dmvwc/{static/css,media}
+   ```
 1. Make your `./static/css/input.css` file:
 
    ```
+   touch ~/WatchCollectionProject/dmvwc/static/css/input.css && \
+   cat > ~/WatchCollectionProject/dmvwc/static/css/input.css <<EOF
    @tailwind base;
    @tailwind components;
    @tailwind utilities;
+   EOF
    ```
 
 1. Compile your CSS and run the watcher:
