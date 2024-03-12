@@ -82,6 +82,7 @@ your architecture <a href="https://github.com/tailwindlabs/tailwindcss/releases/
 1. Migrate database tables:
 
    ```
+   python manage.py migrate --fake-initial
    python manage.py migrate
    ```
 1. Run the development server:
