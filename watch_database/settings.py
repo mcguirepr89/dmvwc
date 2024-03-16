@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'watch_collection',
     'wishlist',
     'custom_user',
+    'brands',
 ]
 
 MIDDLEWARE = [

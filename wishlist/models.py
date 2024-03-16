@@ -4,11 +4,12 @@ from django.db import models
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from custom_user.models import CustomUser
+from brands.models import Brand
 import os
 
 class WishlistItem(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
-    brand = models.CharField(max_length=100)
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     model = models.CharField(max_length=100, null=True, blank=True)
     movement = models.CharField(max_length=100, null=True, blank=True)
     example_photo = models.ImageField(upload_to='watch_example_photos/', null=True, blank=True)
