@@ -90,6 +90,11 @@ Follow the steps below.
    python manage.py migrate --fake-initial
    python manage.py migrate
    ```
+1. Populate the Brand model:
+
+   ```
+   python ./import_brands.py
+   ```
 1. Run the development server:
 
    ```
