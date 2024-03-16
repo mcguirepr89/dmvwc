@@ -4,7 +4,7 @@
         <thead>
             <tr class="bg-gray-300">
                 <th class="border border-gray-400 px-4 py-2">Brand<br>&<br>Year</th>
-                <th class="border border-gray-400 px-4 py-2">Model<br>&<br>Movement</th>
+                <th class="border border-gray-400 px-4 py-2">Model<br>&<br>Caliber</th>
                 <th class="border border-gray-400 px-4 py-2">Image</th>
                 {% if editability and can_edit %}
                     <th class="border border-gray-400 px-4 py-2">Delete</th>
@@ -16,7 +16,7 @@
             {% for item in items %}
             <tr class="{% cycle 'bg-white' 'bg-gray-100' %}">
                 <td class="border border-gray-400 px-4 py-2">{{ item.brand }}<br><br>{{item.year}}</td>
-                <td class="border border-gray-400 px-4 py-2">{{ item.model }}<br><br>{{item.movement}}</td>
+                <td class="border border-gray-400 px-4 py-2">{{ item.model }}<br><br>{{item.caliber}}</td>
                 <td class="border border-gray-400 px-4 py-2">
                     {% if item.example_photo %}
                         {% if model_type %}
@@ -24,7 +24,7 @@
                         {% else %}
                             <a href="{% url 'watch-detail' pk=item.pk username=item.user.username %}" target="">
                         {% endif %}
-                            <img src="{{ item.example_photo.url }}" alt="{{ item.brand }} - {{ item.movement }} Photo" class="mx-auto max-h-52">
+                            <img src="{{ item.example_photo.url }}" alt="{{ item.brand }} - {{ item.caliber }} Photo" class="mx-auto max-h-52">
                         </a>
                     {% else %}
                         No image available

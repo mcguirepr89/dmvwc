@@ -6,6 +6,7 @@ from django.dispatch import receiver
 from custom_user.models import CustomUser
 from brands.models import Brand
 from django.core.validators import MinValueValidator, MaxValueValidator
+from calibers.models import Caliber
 import os
 from datetime import datetime
 
@@ -21,7 +22,7 @@ class WishlistItem(models.Model):
         blank=True,
     )
     model = models.CharField(max_length=100, null=True, blank=True)
-    movement = models.CharField(max_length=100, null=True, blank=True)
+    caliber = models.ForeignKey(Caliber, on_delete=models.CASCADE, null=True, blank=True)
     example_photo = models.ImageField(upload_to='watch_example_photos/', null=True, blank=True)
     movement_photo = models.ImageField(upload_to='watch_movement_photos/', null=True, blank=True)
     description = models.TextField(null=True, blank=True)

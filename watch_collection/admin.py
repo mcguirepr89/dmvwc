@@ -5,4 +5,4 @@ from .models import Watch
 
 @admin.register(Watch)
 class WatchAdmin(admin.ModelAdmin):
-    list_display = ['user', 'brand', 'model', 'movement', 'example_photo', 'movement_photo', 'audio']
+    list_display = ['user', 'brand', 'model', 'caliber', 'example_photo', 'movement_photo', 'audio']

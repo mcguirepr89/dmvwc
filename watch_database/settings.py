@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'wishlist',
     'custom_user',
     'brands',
+    'calibers',
 ]
 
 MIDDLEWARE = [
