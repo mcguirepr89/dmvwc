@@ -5,11 +5,21 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from custom_user.models import CustomUser
 from brands.models import Brand
+from django.core.validators import MinValueValidator, MaxValueValidator
 import os
+from datetime import datetime
 
 class WishlistItem(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    year = models.IntegerField(
+        validators=[
+            MinValueValidator(1800, message="Year must be greater than or equal to 1800."),
+            MaxValueValidator(datetime.now().year, message="Year must be less than or equal to the current year.")
+        ],
+        null=True,
+        blank=True,
+    )
     model = models.CharField(max_length=100, null=True, blank=True)
     movement = models.CharField(max_length=100, null=True, blank=True)
     example_photo = models.ImageField(upload_to='watch_example_photos/', null=True, blank=True)

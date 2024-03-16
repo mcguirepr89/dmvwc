@@ -6,7 +6,7 @@ from .models import Watch
 class WatchForm(forms.ModelForm):
     class Meta:
         model = Watch
-        fields = ['brand', 'model', 'movement', 'example_photo', 'movement_photo', 'audio']
+        fields = ['brand', 'model', 'year', 'movement', 'example_photo', 'movement_photo', 'audio']
 
 class WatchDeleteForm(forms.ModelForm):
     class Meta:

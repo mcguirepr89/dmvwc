@@ -6,7 +6,7 @@ from .models import WishlistItem
 class WishlistItemForm(forms.ModelForm):
     class Meta:
         model = WishlistItem
-        fields = ['brand', 'model', 'movement', 'example_photo', 'movement_photo', 'description', 'price', 'is_purchased']
+        fields = ['brand', 'model', 'year', 'movement', 'example_photo', 'movement_photo', 'description', 'price', 'is_purchased']
 
 class WishlistItemDeleteForm(forms.ModelForm):
     class Meta:

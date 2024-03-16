@@ -3,9 +3,8 @@
     <table class="w-full table-auto border-collapse border border-gray-400 text-center">
         <thead>
             <tr class="bg-gray-300">
-                <th class="border border-gray-400 px-4 py-2">Brand</th>
-                <th class="border border-gray-400 px-4 py-2">Model</th>
-                <th class="border border-gray-400 px-4 py-2">Movement</th>
+                <th class="border border-gray-400 px-4 py-2">Brand<br>&<br>Year</th>
+                <th class="border border-gray-400 px-4 py-2">Model<br>&<br>Movement</th>
                 <th class="border border-gray-400 px-4 py-2">Image</th>
                 {% if editability and can_edit %}
                     <th class="border border-gray-400 px-4 py-2">Delete</th>
@@ -16,9 +15,8 @@
         <tbody>
             {% for item in items %}
             <tr class="{% cycle 'bg-white' 'bg-gray-100' %}">
-                <td class="border border-gray-400 px-4 py-2">{{ item.brand }}</td>
-                <td class="border border-gray-400 px-4 py-2">{{ item.model }}</td>
-                <td class="border border-gray-400 px-4 py-2">{{ item.movement }}</td>
+                <td class="border border-gray-400 px-4 py-2">{{ item.brand }}<br><br>{{item.year}}</td>
+                <td class="border border-gray-400 px-4 py-2">{{ item.model }}<br><br>{{item.movement}}</td>
                 <td class="border border-gray-400 px-4 py-2">
                     {% if item.example_photo %}
                         {% if model_type %}
