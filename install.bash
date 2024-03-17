@@ -36,6 +36,7 @@ tailwindcss -i ~/WatchCollectionProject/dmvwc/static/css/input.css -o ~/WatchCol
 python manage.py migrate --fake-initial
 python manage.py migrate
 
-python ~/WatchCollectionProject/dmvwc/import_brands.py
+python ~/WatchCollectionProject/dmvwc/import_into_database.py Brand brands.csv
+python ~/WatchCollectionProject/dmvwc/import_into_database.py Caliber calibers_*.csv
 
 python manage.py runserver
