@@ -14,7 +14,7 @@ class Watch(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     YEAR_CHOICES = [(year, str(year)) for year in range(1800, datetime.now().year + 1)]
-    year = models.IntegerField(choices=YEAR_CHOICES, null=True, blank=True)
+    year = models.IntegerField(choices=YEAR_CHOICES[::-1], null=True, blank=True)
     model = models.CharField(max_length=100, null=True, blank=True)
     caliber = models.ForeignKey(Caliber, on_delete=models.CASCADE, null=True, blank=True)
     example_photo = models.ImageField(upload_to='watch_example_photos/', null=True, blank=True)
