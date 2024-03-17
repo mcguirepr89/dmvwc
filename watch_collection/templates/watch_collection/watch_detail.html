@@ -14,7 +14,7 @@
     
     {% if watch.example_photo %}
         <a href="{{ watch.example_photo.url }}" target="">
-            <img src="{{ watch.example_photo.url }}" alt="{{ watch.brand }} - {{ watch.movement }} Photo" class="mx-auto max-h-96">
+            <img src="{{ watch.example_photo.url }}" alt="{{ watch.brand }} - {{ watch.caliber }} Photo" class="mx-auto max-h-96">
         </a>
     {% endif %}
 
@@ -32,10 +32,10 @@
         </form>
     {% else %}
         <ul>
-            <li>{{ watch.year }}</li>
-            <li>{{ watch.brand }}</li>
-            <li>{{ watch.model }}</li>
-            <li>{{ watch.movement }}</li>
+            <li>Year: {{ watch.year }}</li>
+            <li>Brand: {{ watch.brand }}</li>
+            <li>Model: {{ watch.model }}</li>
+            <li>Caliber: {{ watch.caliber }}</li>
         </ul>
         <br>
         <p>This watch is viewable, but you don't have permission to edit it.</p>

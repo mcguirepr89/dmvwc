@@ -30,9 +30,10 @@
                     </form>
                 {% else %}
                     <ul>
-                        <li>{{ wishlist_item.brand }}</li>
-                        <li>{{ wishlist_item.model }}</li>
-                        <li>{{ wishlist_item.caliber }}</li>
+                        <li>Year: {{ wishlist_item.year}}</li>
+                        <li>Brand: {{ wishlist_item.brand }}</li>
+                        <li>Model: {{ wishlist_item.model }}</li>
+                        <li>Caliber: {{ wishlist_item.caliber }}</li>
                         <li>Price: {{ wishlist_item.price }}</li>
                         <!-- Add other fields as needed -->
                     </ul>
