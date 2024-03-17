@@ -6,7 +6,11 @@
 <!-- <div class="container mx-auto text-center"> -->
       <div class="min-h-screen flex items-center justify-center">
     <div class="text-center">
+    {% if watch.year %}
+    <h1 class="font-bold pb-4">{{ watch.year }} {{ watch.brand }} -- {{ watch.model }}</h1>
+    {% else %}
     <h1 class="font-bold pb-4">{{ watch.brand }} -- {{ watch.model }}</h1>
+    {% endif %}
     
     {% if watch.example_photo %}
         <a href="{{ watch.example_photo.url }}" target="">
@@ -28,6 +32,7 @@
         </form>
     {% else %}
         <ul>
+            <li>{{ watch.year }}</li>
             <li>{{ watch.brand }}</li>
             <li>{{ watch.model }}</li>
             <li>{{ watch.movement }}</li>

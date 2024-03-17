@@ -28,6 +28,12 @@
                         </a>
                     {% else %}
                         No image available
+                        <br>
+                        {% if model_type %}
+                        <a href="{% url 'wishlist-detail' pk=item.pk username=item.user.username %}" target="">View Details</a>
+                        {% else %}
+                        <a href="{% url 'watch-detail' pk=item.pk username=item.user.username %}" target="">View Details</a>
+                        {% endif %}
                     {% endif %}
                 </td>
                 {% if editability and can_edit %}
