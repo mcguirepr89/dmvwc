@@ -24,7 +24,7 @@ class WishlistItem(models.Model):
     is_purchased = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'{self.brand} - {self.model} - {self.movement}'
+        return f'{self.brand} - {self.model} - {self.caliber}'
 
 # Signal to delete associated image files when a WishlistItem instance is deleted
 @receiver(pre_delete, sender=WishlistItem)

@@ -16,7 +16,11 @@
             {% for item in items %}
             <tr class="{% cycle 'bg-white' 'bg-gray-100' %}">
                 <td class="border border-gray-400 px-4 py-2">{{ item.brand }}<br><br>{{item.year}}</td>
-                <td class="border border-gray-400 px-4 py-2">{{ item.model }}<br><br>{{item.caliber}}</td>
+                {% if item.caliber.slug %}
+                    <td class="border border-gray-400 px-4 py-2">{{ item.model }}<br><br><a href="{{ item.caliber.slug_url }}" class="underline" target="_blank">{{item.caliber}}</a></td>
+                {% else %}
+                    <td class="border border-gray-400 px-4 py-2">{{ item.model }}<br><br>{{item.caliber}}</td>
+                {% endif %}
                 <td class="border border-gray-400 px-4 py-2">
                     {% if item.example_photo %}
                         {% if model_type %}
@@ -28,11 +32,11 @@
                         </a>
                     {% else %}
                         No image available
-                        <br>
+                        <br><br>
                         {% if model_type %}
-                        <a href="{% url 'wishlist-detail' pk=item.pk username=item.user.username %}" target="">View Details</a>
+                            <a href="{% url 'wishlist-detail' pk=item.pk username=item.user.username %}" class="underline" target="">View Details</a>
                         {% else %}
-                        <a href="{% url 'watch-detail' pk=item.pk username=item.user.username %}" target="">View Details</a>
+                            <a href="{% url 'watch-detail' pk=item.pk username=item.user.username %}" class="underline" target="">View Details</a>
                         {% endif %}
                     {% endif %}
                 </td>

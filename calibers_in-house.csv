@@ -1,107 +1,107 @@
-name,type,inhouse
-Armin Strom Caliber ARF21,,True
-Baume et Mercier Baumatic,,True
-Blancpain Caliber 13P8,,True
-Breitling Caliber B01,,True
-Breitling Caliber B04,,True
-Breitling Caliber B35,,True
-Cartier Caliber 1847 MC,,True
-Cyrus Caliber CYR625,,True
-DoKo Feinmechanik Caliber DKF ZS 98,,True
-Eterna Caliber 3030,,True
-Glashutte Original Caliber 66-12,,True
-Glashutte Original Caliber GO 100,,True
-Glashutte Original Caliber GO 39-50,,True
-Glashutte Original Caliber GO 90,,True
-GoS Caliber GoS01,,True
-GoS Caliber GOS03,,True
-H. Moser & Cie Caliber HMC 324,,True
-H. Moser & Cie Caliber HMC 804,,True
-Hublot Caliber HUB9005,,True
-Hublot Caliber HUB9011,,True
-Hublot Caliber MP-11,,True
-IWC Caliber 32150,,True
-IWC Caliber 69380,,True
-IWC Caliber 82650,,True
-KUDOKE Caliber 1,,True
-KUDOKE Caliber 1-24H,,True
-Laurent Ferrier Caliber LF126.01,,True
-Maurice Lacroix Caliber ML 191,,True
-MB&F Caliber HM8 Mark 2,,True
-MB&F Caliber LM Perpetual,,True
-MB&F Caliber LM Sequential EVO,,True
-MB&F Caliber LM1 Silberstein,,True
-MB&F Caliber LM101,,True
-NOMOS Caliber DUW 3001,,True
-NOMOS Caliber DUW 4101,,True
-NOMOS Caliber DUW 5001,,True
-NOMOS Caliber DUW 5101,,True
-NOMOS Caliber DUW 5201,,True
-Norqain Caliber NN20/1,,True
-Norqain Caliber NN20/2,,True
-Omega Caliber 1310,,True
-Omega Caliber 3861,,True
-Omega Caliber 5619,,True
-Omega Caliber 562,,True
-Omega Caliber 563,,True
-Omega Caliber 8500,,True
-Omega Caliber 8508,,True
-Omega Caliber 8520,,True
-Omega Caliber 8521,,True
-Omega Caliber 8605,,True
-Omega Caliber 8800,,True
-Omega Caliber 8801,,True
-Omega Caliber 8802,,True
-Omega Caliber 8803,,True
-Omega Caliber 8804,,True
-Omega Caliber 9300,,True
-Omega Caliber 9900,,True
-Omega Caliber 9904,,True
-Omega Caliber 9908,,True
-Omega Caliber 9920,,True
-Orient Caliber 46941,,True
-Orient Caliber 55741,,True
-Orient Caliber F6222,,True
-Orient Caliber F6922,,True
-Orient Caliber F6B22,,True
-Orient Caliber F6N43,,True
-Orient Caliber F6N47,,True
-Orient Caliber F6T22,,True
-Oris Caliber 115,,True
-Oris Caliber 401,,True
-Panerai Caliber P.1000,,True
-Panerai Caliber P.4000,,True
-Panerai Caliber P.9000,,True
-Panerai Caliber P.9002,,True
-Rolex Caliber 1602,,True
-Rolex Caliber 3131,,True
-Rolex Caliber 3185,,True
-Rolex Caliber 3230,,True
-Rolex Caliber 3235,,True
-Rolex Caliber 3255,,True
-Rolex Caliber 3285,,True
-Rolex Caliber 4130,,True
-Rolex Caliber 4132,,True
-Rolex Caliber 4161,,True
-Rolex Caliber 6620,,True
-Rolex Caliber 7140,,True
-RSW Caliber RW24,,True
-Seiko Caliber 6R20,,True
-Seiko Caliber 6R5J,,True
-TAG Heuer Caliber 1887,,True
-Titoni Caliber T10,,True
-Tudor Caliber MT5400,,True
-Tudor Caliber MT5402,,True
-Tudor Caliber MT5602,,True
-Tudor Caliber MT5612,,True
-Tudor Caliber MT5621,,True
-Tudor Caliber T600,,True
-Tudor Caliber T601,,True
-Tudor Caliber T603,,True
-Ulysse Nardin Caliber UN118,,True
-Urwerk Caliber UR-10.01,,True
-Urwerk Caliber UR-9.01,,True
-Valerii Danevych Caliber WOOD-1,,True
-VAULT Caliber V01,,True
-Yema Caliber MBP1000,,True
-Zenith Caliber Elite 681,,True
+name,inhouse
+Armin Strom Caliber ARF21,True
+Baume et Mercier Baumatic,True
+Blancpain Caliber 13P8,True
+Breitling Caliber B01,True
+Breitling Caliber B04,True
+Breitling Caliber B35,True
+Cartier Caliber 1847 MC,True
+Cyrus Caliber CYR625,True
+DoKo Feinmechanik Caliber DKF ZS 98,True
+Eterna Caliber 3030,True
+Glashutte Original Caliber 66-12,True
+Glashutte Original Caliber GO 100,True
+Glashutte Original Caliber GO 39-50,True
+Glashutte Original Caliber GO 90,True
+GoS Caliber GoS01,True
+GoS Caliber GOS03,True
+H. Moser & Cie Caliber HMC 324,True
+H. Moser & Cie Caliber HMC 804,True
+Hublot Caliber HUB9005,True
+Hublot Caliber HUB9011,True
+Hublot Caliber MP-11,True
+IWC Caliber 32150,True
+IWC Caliber 69380,True
+IWC Caliber 82650,True
+KUDOKE Caliber 1,True
+KUDOKE Caliber 1-24H,True
+Laurent Ferrier Caliber LF126.01,True
+Maurice Lacroix Caliber ML 191,True
+MB&F Caliber HM8 Mark 2,True
+MB&F Caliber LM Perpetual,True
+MB&F Caliber LM Sequential EVO,True
+MB&F Caliber LM1 Silberstein,True
+MB&F Caliber LM101,True
+NOMOS Caliber DUW 3001,True
+NOMOS Caliber DUW 4101,True
+NOMOS Caliber DUW 5001,True
+NOMOS Caliber DUW 5101,True
+NOMOS Caliber DUW 5201,True
+Norqain Caliber NN20/1,True
+Norqain Caliber NN20/2,True
+Omega Caliber 1310,True
+Omega Caliber 3861,True
+Omega Caliber 5619,True
+Omega Caliber 562,True
+Omega Caliber 563,True
+Omega Caliber 8500,True
+Omega Caliber 8508,True
+Omega Caliber 8520,True
+Omega Caliber 8521,True
+Omega Caliber 8605,True
+Omega Caliber 8800,True
+Omega Caliber 8801,True
+Omega Caliber 8802,True
+Omega Caliber 8803,True
+Omega Caliber 8804,True
+Omega Caliber 9300,True
+Omega Caliber 9900,True
+Omega Caliber 9904,True
+Omega Caliber 9908,True
+Omega Caliber 9920,True
+Orient Caliber 46941,True
+Orient Caliber 55741,True
+Orient Caliber F6222,True
+Orient Caliber F6922,True
+Orient Caliber F6B22,True
+Orient Caliber F6N43,True
+Orient Caliber F6N47,True
+Orient Caliber F6T22,True
+Oris Caliber 115,True
+Oris Caliber 401,True
+Panerai Caliber P.1000,True
+Panerai Caliber P.4000,True
+Panerai Caliber P.9000,True
+Panerai Caliber P.9002,True
+Rolex Caliber 1602,True
+Rolex Caliber 3131,True
+Rolex Caliber 3185,True
+Rolex Caliber 3230,True
+Rolex Caliber 3235,True
+Rolex Caliber 3255,True
+Rolex Caliber 3285,True
+Rolex Caliber 4130,True
+Rolex Caliber 4132,True
+Rolex Caliber 4161,True
+Rolex Caliber 6620,True
+Rolex Caliber 7140,True
+RSW Caliber RW24,True
+Seiko Caliber 6R20,True
+Seiko Caliber 6R5J,True
+TAG Heuer Caliber 1887,True
+Titoni Caliber T10,True
+Tudor Caliber MT5400,True
+Tudor Caliber MT5402,True
+Tudor Caliber MT5602,True
+Tudor Caliber MT5612,True
+Tudor Caliber MT5621,True
+Tudor Caliber T600,True
+Tudor Caliber T601,True
+Tudor Caliber T603,True
+Ulysse Nardin Caliber UN118,True
+Urwerk Caliber UR-10.01,True
+Urwerk Caliber UR-9.01,True
+Valerii Danevych Caliber WOOD-1,True
+VAULT Caliber V01,True
+Yema Caliber MBP1000,True
+Zenith Caliber Elite 681,True

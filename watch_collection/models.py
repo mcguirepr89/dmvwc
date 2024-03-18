@@ -22,7 +22,7 @@ class Watch(models.Model):
     audio = models.FileField(upload_to='watch_audio/', null=True, blank=True)
 
     def __str__(self):
-        return f'{self.brand} - {self.model} - {self.movement}'
+        return f'{self.brand} - {self.model} - {self.caliber}'
 
     class Meta:
         verbose_name_plural = 'Watches'
