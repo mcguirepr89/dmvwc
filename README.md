@@ -90,12 +90,6 @@ Follow the steps below.
    python manage.py migrate --fake-initial
    python manage.py migrate
    ```
-1. Populate the Brand and Caliber models:
-
-   ```
-   python ./import_into_database.py Brand brands.csv
-   python ./import_into_database.py Caliber calibers_*.csv
-   ```
 1. Run the development server:
 
    ```
