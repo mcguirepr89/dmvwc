@@ -4,12 +4,16 @@
 {% block content %}
 <div class="min-h-screen flex items-center justify-center">
     <div class="text-center">
-        <h1 class="font-bold pb-4">{{ object.display_name }}</h1>
+    {% if object.year %}
+        <h1 class="font-bold pb-4">{{ object.year }} {{ object.brand }} -- {{ object.model }}</h1>
+    {% else %}
+        <h1 class="font-bold pb-4">{{ object.brand }} -- {{ object.model }}</h1>
+    {% endif %}
 
         <!-- Display other object details as needed -->
         {% if object.example_photo %}
             <a href="{{ object.example_photo.url }}" target="">
-                <img src="{{ object.example_photo.url }}" alt="{{ object.display_name }} Photo" class="mx-auto max-h-96">
+                <img src="{{ object.example_photo.url }}" alt="{{ object.brand }} Photo" class="mx-auto max-h-96">
             </a>
         {% endif %}
 
