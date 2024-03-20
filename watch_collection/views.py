@@ -61,7 +61,8 @@ class WatchCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 class WatchDetailView(View):
-    template_name = 'watch_collection/watch_detail.html'
+    #template_name = 'watch_collection/watch_detail.html'
+    template_name = 'detail.html'
 
     def get(self, request, pk, *args, **kwargs):
         watch = get_object_or_404(Watch, pk=pk)
@@ -82,7 +83,7 @@ class WatchDetailView(View):
 
         form = WatchForm(instance=watch) if can_edit else None
 
-        context = {'watch': watch, 'form': form, 'can_view': can_view, 'can_edit': can_edit}
+        context = {'object': watch, 'form': form, 'can_view': can_view, 'can_edit': can_edit}
         return render(request, self.template_name, context)
 
     def post(self, request, pk, *args, **kwargs):
@@ -109,7 +110,7 @@ class WatchDetailView(View):
             # Redirect to the watch detail page or another page upon successful update
             return redirect('watch-detail', pk=pk, username=request.user.username)
 
-        context = {'watch': watch, 'form': form, 'can_view': can_view, 'can_edit': can_edit}
+        context = {'object': watch, 'form': form, 'can_view': can_view, 'can_edit': can_edit}
         return render(request, self.template_name, context)
 
 class WatchDeleteView(LoginRequiredMixin, DeleteView):

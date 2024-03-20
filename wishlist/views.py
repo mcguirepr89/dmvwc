@@ -62,7 +62,8 @@ class WishlistListView(ListView):
         return context
 
 class WishlistDetailView(View):
-    template_name = 'wishlist/wishlist_detail.html'
+    #template_name = 'wishlist/wishlist_detail.html'
+    template_name = 'detail.html'
 
     def get(self, request, pk, *args, **kwargs):
         wishlist_item = get_object_or_404(WishlistItem, pk=pk)
@@ -83,7 +84,7 @@ class WishlistDetailView(View):
 
         form = WishlistItemForm(instance=wishlist_item) if can_edit else None
 
-        context = {'wishlist_item': wishlist_item, 'form': form, 'can_view': can_view, 'can_edit': can_edit}
+        context = {'object': wishlist_item, 'form': form, 'can_view': can_view, 'can_edit': can_edit}
         return render(request, self.template_name, context)
 
     def post(self, request, pk, *args, **kwargs):
@@ -110,7 +111,7 @@ class WishlistDetailView(View):
             # Redirect to the wishlist_item detail page or another page upon successful update
             return redirect('wishlist-detail', pk=pk, username=request.user.username)
 
-        context = {'wishlist_item': wishlist_item, 'form': form, 'can_view': can_view, 'can_edit': can_edit}
+        context = {'object': wishlist_item, 'form': form, 'can_view': can_view, 'can_edit': can_edit}
         return render(request, self.template_name, context)
 
 class WishlistItemDeleteMultipleView(LoginRequiredMixin, FormView):

@@ -1,0 +1,45 @@
+<!-- base_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center">
+    <div class="text-center">
+        <h1 class="font-bold pb-4">{{ object.display_name }}</h1>
+
+        <!-- Display other object details as needed -->
+        {% if object.example_photo %}
+            <a href="{{ object.example_photo.url }}" target="">
+                <img src="{{ object.example_photo.url }}" alt="{{ object.display_name }} Photo" class="mx-auto max-h-96">
+            </a>
+        {% endif %}
+
+        <br>
+
+        <div class="text-left">
+            {% if can_view %}
+                {% if can_edit %}
+                    <form method="post" action="{{ request.get_full_path}}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <br>
+                        <div class="text-center">
+                            <button class="border rounded-lg border-2 border-white p-2 bg-green-300 hover:italic font-bold" type="submit">Save Changes</button>
+                        </div>
+                    </form>
+                {% else %}
+                    <ul>
+                        <!-- Include fields dynamically -->
+                        {% for field in fields %}
+                            <li>{{ field.label }}: {{ field.value }}</li>
+                        {% endfor %}
+                    </ul>
+                    <br>
+                    <p>This item is viewable, but you don't have permission to edit it.</p>
+                {% endif %}
+            {% else %}
+                <p>This item is not viewable to you.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
