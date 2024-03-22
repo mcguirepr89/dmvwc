@@ -13,7 +13,6 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
     path('browse-watches/', browse_watches, name='browse-watches'),
     path('<str:username>/watch-collection/', include('watch_collection.urls'), name='watch-collection'),
-    path('<str:username>/wishlist/', include('wishlist.urls'), name='wishlist'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/profile/', include('custom_user.urls'), name='profile'),
 ]

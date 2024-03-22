@@ -11,6 +11,7 @@ class CustomUser(AbstractUser):
         ('logged_in_users', 'Logged In Users Only'),
         ('private', 'Private'),
     ]
+
     watch_collection_visibility = models.CharField(
         max_length=20,
         choices=VISIBILITY_CHOICES,

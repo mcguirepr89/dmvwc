@@ -3,6 +3,7 @@
 from django.db import models
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
+from django.utils import timezone
 from custom_user.models import CustomUser
 from brands.models import Brand
 from calibers.models import Caliber
@@ -20,6 +21,10 @@ class Watch(models.Model):
     example_photo = models.ImageField(upload_to='watch_example_photos/', null=True, blank=True)
     movement_photo = models.ImageField(upload_to='watch_movement_photos/', null=True, blank=True)
     audio = models.FileField(upload_to='watch_audio/', null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    on_wishlist = models.BooleanField(default=False)
+    created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f'{self.brand} - {self.model} - {self.caliber}'

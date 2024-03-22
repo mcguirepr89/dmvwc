@@ -4,12 +4,12 @@
 {% block content %}
     <form method="post" action="{% url 'watch-delete-multiple' username=request.user %}" id="deleteForm">
         {% csrf_token %}
-        <div class="container mx-auto p-0 sm:p-4 md:p-8">
+        <div class="container text-center mx-auto p-0 sm:p-4 md:p-8">
             <h1 class="text-3xl font-bold text-center mb-6">
                 {% if watch_collection_visibility == 'public' %}
                     {{ url_username|capfirst }}'s Public Watch Collection
                 {% elif watch_collection_visibility == 'logged_in_users' and request.user.is_authenticated %}
-                    {{ url_username|capfirst }}'s Watch Collection (Visible to Logged In Users Only)
+                    {{ url_username|capfirst }}'s Watch Collection<br>(Visible to Logged In Users Only)
                 {% elif watch_collection_visibility == 'private' and can_edit %}
                     Your Private Watch Collection
                 {% else %}
@@ -17,17 +17,40 @@
                     Access Denied
                 {% endif %}
             </h1>
+            {% if watches %}
+                {% include 'table_template.html' with items=watches editability=editability can_edit=can_edit checkbox_name='watches_to_delete' %}
+
+                <!-- Pagination Controls -->
+                <div class="pagination">
+                    {% if page_obj.has_other_pages %}
+                        <span class="step-links">
+                            {% if page_obj.has_previous %}
+                                <a href="?page=1">&laquo; first</a>
+                                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                            {% endif %}
+
+                            <span class="current">
+                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                            </span>
+
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                            {% endif %}
+                        </span>
+                    {% endif %}
+                </div>
+            {% endif %}
+            <br>
+            <a href="{% url 'watch-add' username=request.user %}" class="font-bold border border-2 border-gray-300 rounded-md p-2 bg-green-300">Add a watch to your collection</a>
         </div>
-        {% if watches %}
-            {% include 'table_template.html' with items=watches editability=editability can_edit=can_edit checkbox_name='watches_to_delete' %}
-        {% endif %}
-    </div>
 
     {% if editability and can_edit %}
         <button type="submit" class="bg-red-500 text-white px-4 py-2 mt-4">Delete Selected</button>
     {% endif %}
 </form>
 {% endblock %}
+
 {% block footer %}
 {% if can_edit and request.user.is_authenticated %}
 <div id="editabilityContainer" class="container w-8 md:w-32 lg:w-52 fixed bottom-0 right-0 bg-white p-2 border border-gray-300">

@@ -13,9 +13,6 @@
                     <!-- Display links if the user is logged in -->
                     <a href="{% url 'profile' %}" class="text-white hover:font-bold {% if request.resolver_match.url_name == 'profile' %}font-bold{% endif %} hover:text-gray-300">Profile</a>
                     <a href="{% url 'watch-collection' username=request.user.username %}" class="text-white hover:font-bold {% if request.resolver_match.url_name == 'watch-collection' %}font-bold{% endif %} hover:text-gray-300">My Collection</a>
-                    <a href="{% url 'wishlist' username=request.user.username %}" class="text-white hover:font-bold {% if request.resolver_match.url_name == 'wishlist' %}font-bold{% endif %} hover:text-gray-300">My Wishlist</a>
-                    <a href="{% url 'watch-add' username=request.user.username %}" class="text-white hover:font-bold {% if request.resolver_match.url_name == 'watch-add' %}font-bold{% endif %} hover:text-gray-300">Add Watch to Collection</a>
-                    <a href="{% url 'wishlist-add' username=request.user.username %}" class="text-white hover:font-bold {% if request.resolver_match.url_name == 'wishlist-add' %}font-bold{% endif %} hover:text-gray-300">Add Watch to Wishlist</a>
                     <form id="logout-form" method="post" action="{% url 'logout' %}">
                         {% csrf_token %}
                         <button type="submit" class="hover:font-bold {% if request.resolver_match.url_name == 'admin:logout' %}font-bold{% endif %} text-white">Logout</button>

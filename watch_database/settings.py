@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'watch_collection',
-    'wishlist',
     'custom_user',
     'brands',
     'calibers',

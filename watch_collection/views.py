@@ -24,22 +24,20 @@ class WatchListView(ListView):
 
         # Check watch_collection_visibility for permission
         if user.watch_collection_visibility == 'public':
-            self.queryset = Watch.objects.filter(user=user)
+            self.queryset = Watch.objects.filter(user=user).order_by('-created_at')
         elif user.watch_collection_visibility == 'logged_in_users' and self.request.user.is_authenticated:
-            self.queryset = Watch.objects.filter(user=user)
+            self.queryset = Watch.objects.filter(user=user).order_by('-created_at')
         elif user.watch_collection_visibility == 'private' and self.request.user == user:
-            self.queryset = Watch.objects.filter(user=user)
+            self.queryset = Watch.objects.filter(user=user).order_by('-created_at')
         else:
             # Handle other cases as needed, e.g., set an empty queryset or redirect to a permission-denied page
-            self.queryset = Watch.objects.none()
+            self.queryset = Watch.objects.none().order_by('-created_at')
 
         return self.queryset
 
     def get_context_data(self, **kwargs):
         requested_username = self.kwargs['username']
         requested_user = CustomUser.objects.get(username=requested_username)
-
-        # Retrieve the user's editability and visibility values
         context = super().get_context_data(**kwargs)
         context['url_username'] = requested_username
         context['editability'] = requested_user.editability
@@ -83,7 +81,7 @@ class WatchDetailView(View):
 
         form = WatchForm(instance=watch) if can_edit else None
 
-        context = {'object': watch, 'form': form, 'can_view': can_view, 'can_edit': can_edit}
+        context = {'watch': watch, 'form': form, 'can_view': can_view, 'can_edit': can_edit}
         return render(request, self.template_name, context)
 
     def post(self, request, pk, *args, **kwargs):

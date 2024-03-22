@@ -15,30 +15,25 @@
         <tbody>
             {% for item in items %}
             <tr class="{% cycle 'bg-white' 'bg-gray-100' %}">
-                <td class="border border-gray-400 px-4 py-2">{{ item.brand }}<br><br>{{item.year}}</td>
+                <td class="border border-gray-400 px-4 py-2">{{ item.brand }}<br><br>{{ item.year }}</td>
                 {% if item.caliber.slug %}
-                    <td class="border border-gray-400 px-4 py-2">{{ item.model }}<br><br><a href="{{ item.caliber.slug_url }}" class="underline" target="_blank">{{item.caliber}}</a></td>
+                    <td class="border border-gray-400 px-4 py-2">{{ item.model }}<br><br><a href="{{ item.caliber.slug_url }}" class="underline" target="_blank">{{ item.caliber }}</a></td>
                 {% else %}
-                    <td class="border border-gray-400 px-4 py-2">{{ item.model }}<br><br>{{item.caliber}}</td>
+                    <td class="border border-gray-400 px-4 py-2">{{ item.model }}<br><br>{{ item.caliber }}</td>
                 {% endif %}
                 <td class="border border-gray-400 px-4 py-2">
+                    <div class="container flex-left">
                     {% if item.example_photo %}
-                        {% if model_type %}
-                            <a href="{% url 'wishlist-detail' pk=item.pk username=item.user.username %}" target="">
-                        {% else %}
                             <a href="{% url 'watch-detail' pk=item.pk username=item.user.username %}" target="">
-                        {% endif %}
                             <img src="{{ item.example_photo.url }}" alt="{{ item.brand }} - {{ item.caliber }} Photo" class="mx-auto max-h-52">
                         </a>
                     {% else %}
                         No image available
                         <br><br>
-                        {% if model_type %}
-                            <a href="{% url 'wishlist-detail' pk=item.pk username=item.user.username %}" class="underline" target="">View Details</a>
-                        {% else %}
                             <a href="{% url 'watch-detail' pk=item.pk username=item.user.username %}" class="underline" target="">View Details</a>
-                        {% endif %}
                     {% endif %}
+                    </div>
+                    {% if not item.on_wishlist %}<p>Wishlist Watch</p>{% endif %}
                 </td>
                 {% if editability and can_edit %}
                     <td class="border border-gray-400 px-4 py-2">

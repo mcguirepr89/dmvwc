@@ -19,8 +19,6 @@ def import_into_database(model_name, csv_filenames):
         app_label = 'calibers'
     elif model_name == 'Watch':
         app_label = 'watch_collection'
-    elif model_name == 'Wishlist':
-        app_label = 'wishlist'
     else:
         app_label = model_name
 

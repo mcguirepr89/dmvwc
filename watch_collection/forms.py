@@ -6,7 +6,23 @@ from .models import Watch
 class WatchForm(forms.ModelForm):
     class Meta:
         model = Watch
-        fields = ['brand', 'model', 'year', 'caliber', 'example_photo', 'movement_photo', 'audio']
+        fields = [
+                'brand', 
+                'model', 
+                'year', 
+                'caliber', 
+                'example_photo', 
+                'movement_photo', 
+                'audio',
+                'description',
+                'price',
+                'on_wishlist',
+                ]
+
+    on_wishlist = forms.BooleanField(
+        widget=forms.Select(choices=[(True, 'In my collection'), (False, 'On my wishlist')]),
+        required=False  # Set required=False if the field is not required
+    )
 
 class WatchDeleteForm(forms.ModelForm):
     class Meta:

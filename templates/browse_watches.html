@@ -6,21 +6,13 @@
     <h1>Browse Watches</h1>
 
     <!-- Display public watches -->
-    {% if public_collection_watches %}
+    {% if public_watches %}
     <h2>Public Collection Watches</h2>
-    {% include 'table_template.html' with items=public_collection_watches editability=editability can_edit=can_edit checkbox_name='watches_to_delete' model_type=None %}
+    {% include 'table_template.html' with items=public_watches %}
     {% endif %}
-    {% if public_wishlist_watches %}
-    <h2>Public Wishlist Watches</h2>
-    {% include 'table_template.html' with items=public_wishlist_watches editability=editability can_edit=can_edit checkbox_name='watches_to_delete' model_type=model_type %}
-    {% endif %}
-    {% if logged_in_users_collection_watches %}
+    {% if logged_in_users_watches %}
     <h2>Members Only Collection Watches</h2>
-    {% include 'table_template.html' with items=logged_in_users_collection_watches editability=editability can_edit=can_edit checkbox_name='watches_to_delete' model_type=None %}
-    {% endif %}
-    {% if logged_in_users_wishlist_watches %}
-    <h2>Members Only Wishlist Watches</h2>
-    {% include 'table_template.html' with items=logged_in_users_wishlist_watches editability=editability can_edit=can_edit checkbox_name='watches_to_delete' model_type=model_type %}
+    {% include 'table_template.html' with items=logged_in_users_watches %}
     {% endif %}
 {% endblock %}
 
