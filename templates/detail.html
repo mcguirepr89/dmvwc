@@ -22,7 +22,7 @@
         <div class="text-left">
             {% if can_view %}
                 {% if can_edit %}
-                    <form method="post" action="{{ request.get_full_path}}" enctype="multipart/form-data">
+                    <form method="post" action="{{ request.get_full_path }}" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.as_p }}
                         <br>
