@@ -24,7 +24,7 @@ EOF
 
 mkdir -p ~/WatchCollectionProject/dmvwc/{static/css,media,js}
 
-ln -sf ~/WatchCollectionProject/dmvwc/jquery.min.js ~/WatchCollectionProject/dmvwc/static/js/jquery.min.js
+ln -sf ~/WatchCollectionProject/dmvwc/static/js/jquery.min.js ~/WatchCollectionProject/dmvwc/jquery.min.js
 
 cat > ~/WatchCollectionProject/dmvwc/static/css/input.css <<EOF
 @tailwind base;
