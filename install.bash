@@ -40,6 +40,6 @@ tailwindcss -i ~/WatchCollectionProject/dmvwc/static/css/input.css -o ~/WatchCol
 python manage.py migrate --fake-initial
 python manage.py migrate
 
-DJANGO_SUPERUSER_EMAIL= DJANGO_SUPERUSER_USERNAME=admin DJANGO_SUPERUSER_PASSWORD=dmvwatchclub1234 python manage.py createsuperuser --noinput
+DJANGO_SUPERUSER_EMAIL=blank DJANGO_SUPERUSER_USERNAME=admin DJANGO_SUPERUSER_PASSWORD=dmvwatchclub1234 python manage.py createsuperuser --noinput
 
 python manage.py runserver
