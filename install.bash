@@ -40,4 +40,6 @@ tailwindcss -i ~/WatchCollectionProject/dmvwc/static/css/input.css -o ~/WatchCol
 python manage.py migrate --fake-initial
 python manage.py migrate
 
+python manage.py createsuperuser
+
 python manage.py runserver
