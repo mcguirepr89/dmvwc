@@ -24,6 +24,11 @@ class CustomUser(AbstractUser):
         default='private',  # Default to private for existing users
     )
 
+    def save(self, *args, **kwargs):
+        if self.username.lower() == 'admin':
+            raise ValueError("Cannot create 'admin' user.")
+        super().save(*args, **kwargs)
+
     class Meta:
         verbose_name = 'Member'
         verbose_name_plural = 'Club Members'
