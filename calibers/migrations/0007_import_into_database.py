@@ -13,7 +13,7 @@ def run_import_script(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('calibers', '0005_caliber_slug'),
+        ('calibers', '0006_add_initial_caliber'),
     ]
 
     operations = [

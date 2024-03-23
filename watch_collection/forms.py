@@ -1,11 +1,31 @@
 # watch_collection/forms.py
 
 from django import forms
-from .models import Watch
+from .models import Watch, Caliber
 
 class WatchForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['brand'].widget.attrs['class'] = 'border border-2 w-full rounded-md shadow-lg'
+        self.fields['model'].widget.attrs['class'] = 'border border-2 w-full rounded-md shadow-lg'
+        self.fields['year'].widget.attrs['class'] = 'border border-2 rounded-md shadow-lg'
+        self.fields['example_photo'].widget.attrs['class'] = 'border border-2 rounded-md shadow-lg'
+        self.fields['movement_photo'].widget.attrs['class'] = 'border border-2 rounded-md shadow-lg'
+        self.fields['audio'].widget.attrs['class'] = 'border border-2 rounded-md shadow-lg'
+        # Add the initial choice for caliber selection
+        calibers = Caliber.objects.all()
+        choices = [('', 'Choose from the list below')]
+        choices += [('1', 'Add a new caliber')]
+        choices += [('', '-----------------')]
+        choices += [(caliber.id, caliber.name) for caliber in calibers]
+        self.fields['caliber'].choices = choices
+        self.fields['caliber'].widget.attrs['class'] = 'border border-2 w-full rounded-md shadow-lg'
+        self.fields['description'].widget.attrs['class'] = 'border border-2 w-full rounded-md shadow-lg'
+        self.fields['price'].widget.attrs['class'] = 'border border-2 rounded-md shadow-lg'
+
     class Meta:
         model = Watch
+
         fields = [
                 'brand', 
                 'model', 
@@ -19,9 +39,10 @@ class WatchForm(forms.ModelForm):
                 'on_wishlist',
                 ]
 
+
     on_wishlist = forms.BooleanField(
         widget=forms.Select(choices=[(True, 'In my collection'), (False, 'On my wishlist')]),
-        required=False  # Set required=False if the field is not required
+        required=True
     )
 
 class WatchDeleteForm(forms.ModelForm):

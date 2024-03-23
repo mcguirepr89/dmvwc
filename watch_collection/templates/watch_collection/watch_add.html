@@ -1,18 +1,86 @@
 <!-- watch_add.html -->
 
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
   <div class="min-h-screen flex items-center justify-center">
-    <div class="justify-left">
-      <h2 class="text-center p-2">Add a New Watch</h2>
-      <form method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{ form.as_ul }}
-          <br>
-          <div class="text-center">
-          <button class="border rounded-lg border-2 border-white p-2 bg-green-300 text-center" type="submit">Add Watch</button>
-          </div>
-      </form>
+    <div class="w-full max-w-md">
+      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <h2 class="text-center font-bold text-xl mb-4">Add a New Watch</h2>
+        <form id="watch_form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="id_brand">Brand</label>
+              {{ form.brand }}
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="id_model">Model</label>
+              {{ form.model }}
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="id_year">Year</label>
+              {{ form.year }}
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="id_caliber">Caliber</label>
+              {{ form.caliber }}
+              <div id="new_caliber_form" class="mt-2" style="display: none;">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="id_new_caliber_name">New Caliber Name</label>
+                {{ caliber_form.as_ul }}
+                <!-- Add labels for other fields of CaliberForm if needed -->
+              </div>
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="id_example_photo">Example Photo</label>
+              {{ form.example_photo }}
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="id_movement_photo">Movement Photo</label>
+              {{ form.movement_photo }}
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="id_audio">Audio</label>
+              {{ form.audio }}
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="id_description">Description</label>
+              {{ form.description }}
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="id_price">Price</label>
+              {{ form.price }}
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="id_on_wishlist">On Wishlist</label>
+              {{ form.on_wishlist }}
+            </div>
+            <div class="text-center">
+              <button class="border rounded-lg border-2 border-white p-2 bg-green-300 text-center" type="submit">Add Watch</button>
+            </div>
+        </form>
+      </div>
+    </div>
   </div>
 {% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script>
+$(document).ready(function() {
+    $('#id_caliber').change(function() {
+        if ($(this).val() == '1') {
+            $('#new_caliber_form').show();
+            // Make the CaliberForm fields required
+            $('#new_caliber_form :input').prop('required', true);
+        } else {
+            $('#new_caliber_form').hide();
+            // Remove the CaliberForm fields from the form submission
+            $('#new_caliber_form :input').prop('required', false);
+            $('#new_caliber_form :input').prop('disabled', true);
+        }
+    });
+});
+</script>
+{% endblock %}
+

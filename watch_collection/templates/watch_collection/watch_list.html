@@ -45,14 +45,14 @@
             <a href="{% url 'watch-add' username=request.user %}" class="font-bold border border-2 border-gray-300 rounded-md p-2 bg-green-300">Add a watch to your collection</a>
         </div>
 
-    {% if editability and can_edit %}
+    {% if watches and editability and can_edit %}
         <button type="submit" class="bg-red-500 text-white px-4 py-2 mt-4">Delete Selected</button>
     {% endif %}
 </form>
 {% endblock %}
 
 {% block footer %}
-{% if can_edit and request.user.is_authenticated %}
+{% if watches and can_edit and request.user.is_authenticated %}
 <div id="editabilityContainer" class="container w-8 md:w-32 lg:w-52 fixed bottom-0 right-0 bg-white p-2 border border-gray-300">
 <form  method="post" action="{% url 'toggle-editability' username=request.user.username %}" id="editabilityForm">
     {% csrf_token %}
