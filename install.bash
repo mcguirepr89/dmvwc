@@ -22,7 +22,9 @@ CSRF_TRUSTED_ORIGINS=http://127.0.0.1
 EOF
 
 
-mkdir -p ~/WatchCollectionProject/dmvwc/{static/css,media}
+mkdir -p ~/WatchCollectionProject/dmvwc/{static/css,media,js}
+
+ln -sf ~/WatchCollectionProject/dmvwc/jquery.min.js ~/WatchCollectionProject/dmvwc/static/js/jquery.min.js
 
 cat > ~/WatchCollectionProject/dmvwc/static/css/input.css <<EOF
 @tailwind base;
