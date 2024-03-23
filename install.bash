@@ -22,7 +22,9 @@ CSRF_TRUSTED_ORIGINS=http://127.0.0.1
 EOF
 
 
-mkdir -p ~/WatchCollectionProject/dmvwc/static/{css,media,js}
+mkdir -p ~/WatchCollectionProject/dmvwc/static/css
+mkdir -p ~/WatchCollectionProject/dmvwc/static/media
+mkdir -p ~/WatchCollectionProject/dmvwc/static/js
 
 ln -sf ~/WatchCollectionProject/dmvwc/jquery.min.js ~/WatchCollectionProject/dmvwc/static/js/jquery.min.js
 
