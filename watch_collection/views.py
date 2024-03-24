@@ -80,6 +80,9 @@ class WatchCreateView(LoginRequiredMixin, CreateView):
         caliber_id = form.cleaned_data.get('caliber')
         print("caliber_id= " + str(caliber_id))
 
+        # Convert the string representation of boolean to actual boolean value
+        form.instance.on_wishlist = form.cleaned_data['on_wishlist'] == True
+
         # Check if the selected caliber is 'new'
         if str(caliber_id) == 'Add a new caliber (None)':
             # If '1', create a new Caliber instance using the submitted data

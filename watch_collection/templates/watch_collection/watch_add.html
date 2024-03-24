@@ -73,6 +73,7 @@ $(document).ready(function() {
             $('#new_caliber_form').show();
             // Make the CaliberForm fields required
             $('#new_caliber_form :input').prop('required', true);
+            $('#new_caliber_form :input').prop('disabled', false);
         } else {
             $('#new_caliber_form').hide();
             // Remove the CaliberForm fields from the form submission
@@ -80,6 +81,10 @@ $(document).ready(function() {
             $('#new_caliber_form :input').prop('disabled', true);
         }
     });
+    $('#new_caliber_form').hide();
+    // Remove the CaliberForm fields from the form submission
+    $('#new_caliber_form :input').prop('required', false);
+    $('#new_caliber_form :input').prop('disabled', true);
 });
 </script>
 {% endblock %}

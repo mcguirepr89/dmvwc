@@ -3,6 +3,15 @@
 from django import forms
 from .models import Watch, Caliber
 
+class BooleanDropdown(forms.TypedChoiceField):
+    def __init__(self, *args, **kwargs):
+        super().__init__(
+            *args,
+            coerce=lambda x: x == 'True',
+            choices=((False, 'In my collection'), (True, 'On my wishlist')),
+            **kwargs
+        )
+
 class WatchForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -22,6 +31,8 @@ class WatchForm(forms.ModelForm):
         self.fields['caliber'].widget.attrs['class'] = 'border border-2 w-full rounded-md shadow-lg'
         self.fields['description'].widget.attrs['class'] = 'border border-2 w-full rounded-md shadow-lg'
         self.fields['price'].widget.attrs['class'] = 'border border-2 rounded-md shadow-lg'
+        self.fields['on_wishlist'] = BooleanDropdown()
+        self.fields['on_wishlist'].widget.attrs['class'] = 'border border-2 rounded-md shadow-lg'
 
     class Meta:
         model = Watch
@@ -38,12 +49,6 @@ class WatchForm(forms.ModelForm):
                 'price',
                 'on_wishlist',
                 ]
-
-
-    on_wishlist = forms.BooleanField(
-        widget=forms.Select(choices=[(True, 'In my collection'), (False, 'On my wishlist')]),
-        required=True
-    )
 
 class WatchDeleteForm(forms.ModelForm):
     class Meta:

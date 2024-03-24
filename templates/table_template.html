@@ -33,7 +33,7 @@
                             <a href="{% url 'watch-detail' pk=item.pk username=item.user.username %}" class="underline" target="">View Details</a>
                     {% endif %}
                     </div>
-                    {% if not item.on_wishlist %}<p>Wishlist Watch</p>{% endif %}
+                    {% if item.on_wishlist %}<p>Wishlist Watch</p>{% endif %}
                 </td>
                 {% if editability and can_edit %}
                     <td class="border border-gray-400 px-4 py-2">
