@@ -1,19 +1,32 @@
 set -ex
-mkdir ~/WatchCollectionProject && git clone https://github.com/mcguirepr89/dmvwc.git ~/WatchCollectionProject/dmvwc
 
-cd ~/WatchCollectionProject && python3 -m venv venv
+install_dir=$HOME/WatchCollectionProject
 
-cd ~/WatchCollectionProject/dmvwc && source ../venv/bin/activate
+mkdir $install_dir && git clone https://github.com/mcguirepr89/dmvwc.git $install_dir/dmvwc
+
+cd $install_dir && python3 -m venv venv
+
+cd $install_dir/dmvwc && source ../venv/bin/activate
 
 pip install -U pip
 
 pip install -r requirements.txt
 
-wget https://github.com/tailwindlabs/tailwindcss/releases/download/v3.0.23/tailwindcss-linux-x64 && mv tailwindcss-linux-x64 ../venv/bin/tailwindcss
+archy=$(uname -m)
+if [ $archy = "x86_64" ];then
+    architecture=x64;
+elif [ $archy = "aarch64" ];then
+    architecture=arm64
+else
+    echo "Couldn't determine your hardware.
+    Defaulting to x86_64"
+    architecture=x64
+fi
+wget https://github.com/tailwindlabs/tailwindcss/releases/download/v3.0.23/tailwindcss-linux-$architecture && mv tailwindcss-linux-$architecture ../venv/bin/tailwindcss
 
-chmod +x ~/WatchCollectionProject/venv/bin/tailwindcss
+chmod +x $install_dir/venv/bin/tailwindcss
 
-cat > ~/WatchCollectionProject/dmvwc/.env <<EOF
+cat > $install_dir/dmvwc/.env <<EOF
 # .env
 SECRET_KEY=django-insecure-mySuperLongSecretKeyThatNeedsToBeChangedForProduction
 DEBUG=True
@@ -22,20 +35,20 @@ CSRF_TRUSTED_ORIGINS=http://127.0.0.1
 EOF
 
 
-mkdir -p ~/WatchCollectionProject/dmvwc/static/css
-mkdir -p ~/WatchCollectionProject/dmvwc/static/media
-mkdir -p ~/WatchCollectionProject/dmvwc/static/js
+mkdir -p $install_dir/dmvwc/static/css
+mkdir -p $install_dir/dmvwc/static/media
+mkdir -p $install_dir/dmvwc/static/js
 
-ln -sf ~/WatchCollectionProject/dmvwc/jquery.min.js ~/WatchCollectionProject/dmvwc/static/js/jquery.min.js
+ln -sf $install_dir/dmvwc/jquery.min.js $install_dir/dmvwc/static/js/jquery.min.js
 
-cat > ~/WatchCollectionProject/dmvwc/static/css/input.css <<EOF
+cat > $install_dir/dmvwc/static/css/input.css <<EOF
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 EOF
 
 
-tailwindcss -i ~/WatchCollectionProject/dmvwc/static/css/input.css -o ~/WatchCollectionProject/dmvwc/static/css/output.css
+tailwindcss -i $install_dir/dmvwc/static/css/input.css -o $install_dir/dmvwc/static/css/output.css
 
 python manage.py migrate --fake-initial
 python manage.py migrate
