@@ -35,6 +35,17 @@ class WatchListView(ListView):
             # Handle other cases as needed, e.g., set an empty queryset or redirect to a permission-denied page
             self.queryset = Watch.objects.none().order_by('-created_at')
 
+        # Check watch_collection_visibility for permission
+        if user.watch_collection_visibility == 'public':
+            self.queryset = Watch.objects.filter(user=user).order_by('-created_at')
+        elif user.watch_collection_visibility == 'logged_in_users' and self.request.user.is_authenticated:
+            self.queryset = Watch.objects.filter(user=user).order_by('-created_at')
+        elif user.watch_collection_visibility == 'private' and self.request.user == user:
+            self.queryset = Watch.objects.filter(user=user).order_by('-created_at')
+        else:
+            # Handle other cases as needed, e.g., set an empty queryset or redirect to a permission-denied page
+            self.queryset = Watch.objects.none().order_by('-created_at')
+
         return self.queryset
 
     def get_context_data(self, **kwargs):
@@ -44,6 +55,7 @@ class WatchListView(ListView):
         context['url_username'] = requested_username
         context['editability'] = requested_user.editability
         context['watch_collection_visibility'] = requested_user.watch_collection_visibility
+        context['wishlist_visibility'] = requested_user.watch_collection_visibility
         context['can_edit'] = self.request.user == requested_user
 
         # Check if the user has any watches in their collection
@@ -91,11 +103,14 @@ class WatchCreateView(LoginRequiredMixin, CreateView):
                 caliber_instance = caliber_form.save()
                 # Assign the newly created Caliber instance to the form's caliber field
                 form.instance.caliber = caliber_instance
+                form.instance.user = self.request.user
+                form.instance.save()
             else:
                 # Handle case where CaliberForm data is invalid
                 # You may want to display an error message or redirect back to the form
                 return render(self.request, self.template_name, {'form': form, 'caliber_form': caliber_form})
 
+        form.instance.user = self.request.user  # Set the user to the currently logged-in user
         return super().form_valid(form)
 
 class WatchDetailView(View):
@@ -121,7 +136,7 @@ class WatchDetailView(View):
 
         form = WatchForm(instance=watch) if can_edit else None
 
-        context = {'watch': watch, 'form': form, 'can_view': can_view, 'can_edit': can_edit}
+        context = {'watch': watch, 'form': form, 'can_view': can_view, 'can_edit': can_edit,}
         return render(request, self.template_name, context)
 
     def post(self, request, pk, *args, **kwargs):

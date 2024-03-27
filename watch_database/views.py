@@ -10,9 +10,10 @@ def index(request):
 
 def browse_watches(request):
     public_collection_users = CustomUser.objects.filter(watch_collection_visibility='public')
+    public_collection_watches = Watch.objects.filter(user__in=public_collection_users,on_wishlist=False)
+
     public_wishlist_users = CustomUser.objects.filter(wishlist_visibility='public')
-    public_collection_watches = Watch.objects.filter(user__in=public_collection_users,on_wishlist=True)
-    public_wishlist_watches = Watch.objects.filter(user__in=public_wishlist_users,on_wishlist=False)
+    public_wishlist_watches = Watch.objects.filter(user__in=public_wishlist_users,on_wishlist=True)
 
     public_watches = list(chain(public_wishlist_watches, public_collection_watches))
     public_watches_sorted = sorted(public_watches, key=lambda x: x.created_at, reverse=True)
@@ -20,9 +21,10 @@ def browse_watches(request):
     logged_in_users_watches_sorted = []
     if request.user.is_authenticated:
         logged_in_users_collection_users = CustomUser.objects.filter(watch_collection_visibility='logged_in_users')
+        logged_in_users_collection_watches = Watch.objects.filter(user__in=logged_in_users_collection_users,on_wishlist=False)
+
         logged_in_users_wishlist_users = CustomUser.objects.filter(wishlist_visibility='logged_in_users')
-        logged_in_users_collection_watches = Watch.objects.filter(user__in=logged_in_users_collection_users,on_wishlist=True)
-        logged_in_users_wishlist_watches = Watch.objects.filter(user__in=logged_in_users_wishlist_users,on_wishlist=False)
+        logged_in_users_wishlist_watches = Watch.objects.filter(user__in=logged_in_users_wishlist_users,on_wishlist=True)
 
         logged_in_users_watches = list(chain(logged_in_users_wishlist_watches, logged_in_users_collection_watches))
         logged_in_users_watches_sorted = sorted(logged_in_users_watches, key=lambda x: x.created_at, reverse=True)

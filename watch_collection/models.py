@@ -12,7 +12,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from datetime import datetime
 
 class Watch(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     YEAR_CHOICES = [(year, str(year)) for year in range(1800, datetime.now().year + 1)]
     year = models.IntegerField(choices=YEAR_CHOICES[::-1], null=True, blank=True)

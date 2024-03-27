@@ -6,7 +6,7 @@
     <div class="text-center">
     {% if watch.year %}
         <h1 class="font-bold pb-4">{{ watch.year }} {{ watch.brand }} -- {{ watch.model }}</h1>
-    {% else %}
+	{% else %}
         <h1 class="font-bold pb-4">{{ watch.brand }} -- {{ watch.model }}</h1>
     {% endif %}
 
@@ -16,11 +16,15 @@
                 <img src="{{ watch.example_photo.url }}" alt="{{ watch.brand }} Photo" class="mx-auto max-h-96">
             </a>
         {% endif %}
+        {% if watch.movement_photo %}
+            <a href="{{ watch.movement_photo.url }}" target="">
+                <img src="{{ watch.movement_photo.url }}" alt="{{ watch.brand }} Photo" class="mx-auto max-h-96">
+            </a>
+        {% endif %}
 
         <br>
 
         <div class="text-left">
-            {% if can_view %}
                 {% if can_edit %}
                     <form method="post" action="{{ request.get_full_path }}" enctype="multipart/form-data">
                         {% csrf_token %}
@@ -29,20 +33,27 @@
                         <div class="text-center">
                             <button class="border rounded-lg border-2 border-white p-2 bg-green-300 hover:italic font-bold" type="submit">Save Changes</button>
                         </div>
-                    </form>
+		    </form>
                 {% else %}
-                    <ul>
-                        <!-- Include fields dynamically -->
-                        {% for field in fields %}
-                            <li>{{ field.label }}: {{ field.value }}</li>
-                        {% endfor %}
-                    </ul>
-                    <br>
+                <div class="flex items-center justify-center">
+                  <div class="w-full max-w-lg">
+                    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                      <div class="mb-4">
+                        <p class="block text-gray-700 text-sm font-bold mb-2">Brand</p> {{ watch.brand }}
+			<br><br>
+                        <p class="block text-gray-700 text-sm font-bold mb-2">Model</p> {{ watch.model }}
+			<br><br>
+                        <p class="block text-gray-700 text-sm font-bold mb-2">Year</p> {{ watch.year }}
+			<br><br>
+                        <p class="block text-gray-700 text-sm font-bold mb-2">Caliber</p> {{ watch.caliber }}
+			<br><br>
+                        <p class="block text-gray-700 text-sm font-bold mb-2">Description</p> {{ watch.description }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
                     <p>This item is viewable, but you don't have permission to edit it.</p>
                 {% endif %}
-            {% else %}
-                <p>This item is not viewable to you.</p>
-            {% endif %}
         </div>
     </div>
 </div>

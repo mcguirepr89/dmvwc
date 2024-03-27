@@ -1,13 +1,45 @@
-<!-- custom_user/templates/custom_user/profile.html -->
+<!-- registration/profile.html -->
 
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Edit Profile</h2>
-<form method="post" action="{% url 'profile' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save Changes</button>
-</form>
+  <div class="flex items-center justify-center">
+    <div class="w-full max-w-md">
+      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <h2 class="text-center font-bold text-xl mb-4">Account Profile</h2>
+        {% if request.user.is_staff %}
+	  <p class="text-center block text-green-700 text-sm font-bold mb-2">* ADMIN ACCOUNT *</p>
+	{% endif %}
+	<form method="post" action="{% url 'profile' %}">
+            {% csrf_token %}
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="id_username">Username</label>
+              {{ form.username }}
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="id_first_name">First Name</label>
+              {{ form.first_name }}
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="id_last_name">Last Name</label>
+              {{ form.last_name }}
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="id_email">Email</label>
+              {{ form.email }}
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="id_watch_collection_visibility">Watch Collection Privacy</label>
+              {{ form.watch_collection_visibility}}
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="id_wishlist_visibility">Wishlist Privacy</label>
+              {{ form.wishlist_visibility}}
+            </div>
+	      <button class="border rounded-lg border-2 border-white p-2 bg-green-300 text-center" type="submit">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 

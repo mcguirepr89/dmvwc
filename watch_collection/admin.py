@@ -6,4 +6,7 @@ from .forms import WatchForm
 
 @admin.register(Watch)
 class WatchAdmin(admin.ModelAdmin):
-    form = WatchForm
+    list_display = ('user', 'brand', 'year', 'model', 'caliber', 
+                    'example_photo', 'movement_photo', 'audio', 'price',
+                    'on_wishlist', 'created_at')
+    #form = WatchForm
